@@ -16,18 +16,12 @@
 			padding: 5%;
 		}
 
-		ul {
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-
 		p {
 			font-size: 16px;
 		}
 
 		p img {
-			max-width: 100%;	
+			max-width: 100%;
 		}
 
 		.one_half {
@@ -50,7 +44,12 @@
 			width: 30%;
 		}
 
-		.mobile_nav_item1x, .mobile_nav_item2x, .mobile_nav_item3x {
+		.mobile_nav_item {
+			-webkit-transition: all 0.3s 0s ease-out;  /* Saf3.2+, Chrome */
+			-moz-transition: all 0.3s 0s ease-out;  /* FF4+ */
+			-ms-transition: all 0.3s 0s ease-out;  /* IE10? */
+			-o-transition: all 0.3s 0s ease-out;  /* Opera 10.5+ */
+			transition: all 0.3s 0s ease-out;
 			display: block;
 			width: 100%;
 			border: 0 !important;
@@ -60,10 +59,15 @@
 			-webkit-text-size-adjust:none;
 			font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
 			font-weight: 500;
-			color: white;
+			overflow: hidden;
+			text-decoration: none;
 		}
 
-		.mobile_nav_item1x a {
+		.mobile_nav_item1x, .mobile_nav_item2x, .mobile_nav_item3x {
+
+		}
+
+		.mobile_nav_item1x {
 			text-decoration: none;
 			color: black;
 			-webkit-text-size-adjust:none;
@@ -73,18 +77,18 @@
 			background: #fcfcfc;
 		}
 
-		.nav_link {
+		.top_level {
 			font-weight: 300;
 		}
 
-		.nav_link:after {
+		.top_level:after {
 			display: inline-block;
 			position: relative;
 			content: "\232A";
 			margin-left: .5em;
 		}
 
-		.transitional_nav {
+		.transitional_nav, .top_level_nav_item {
 			display: block;
 			width: 0;
 			height: 0;
@@ -107,7 +111,7 @@
 			left:0;
 		}
 
-		.transitional_nav + label ul {
+		.transitional_nav + label .wrapper {
 			display: none;
 		}
 
@@ -126,7 +130,7 @@
 			-webkit-overflow-scrolling: touch;
 		}
 
-		.transitional_nav:checked + label ul {
+		.transitional_nav:checked + label .wrapper {
 			display: block;
 		}
 
@@ -138,7 +142,7 @@
 
 		.accountfunctions a {
 			display: block;
-			width: 33%;
+			width: 25%;
 			height: 100%;
 			float: left;
 			text-align: center;
@@ -187,21 +191,34 @@
 		.home {
 			color: #6487aa !important;
 		}
+
 		.home img {
-			width: 75px;
-			margin-right: .5em;
-			margin-top: .25em;
+			display: inline-block;
+			height: 40px;
+			margin-right: 10px;
+			margin-bottom: -5px;
+		}
+
+		input[type=checkbox].top_level_nav_item + label {
+			height: 100%;
+			width: 100%;
+			display: block;
+			overflow: hidden;
+		}
+
+		input[type=checkbox].top_level_nav_item:checked + label {
+			overflow: visible;
 		}
 
 	</style>
 </head>
 <body>
 	<header>
-		<input type="checkbox" name="mobile_nav" id="mobile_nav" value="0" class="transitional_nav" onclick="adjustnav(this)">
+		<input type="checkbox" name="mobile_nav" id="mobile_nav" class="transitional_nav" onclick="adjustnav(this)">
 		<label for="mobile_nav" class="mobile_nav_label">
-			<ul>
-				<li class="mobile_nav_item1x">&otimes; Close Navigation</li>
-				<li class="mobile_nav_item3x accountfunctions">
+			<div class="wrapper">
+				<div class="mobile_nav_item1x">&otimes; Close Navigation</div>
+				<div class="mobile_nav_item3x accountfunctions">
 						<a href="index.html">
 							<img src="key.svg" alt="" />
 							Sign In
@@ -214,20 +231,28 @@
 							<img src="cart.svg" alt="" />
 							My Cart
 						</a>
-				</li>
-				<li class="mobile_nav_item1x search">
-					<input type="text" name="search" value="" placeholder="Search" class="searchinput">
-					<button name="button" class="searchbutton">Go</button>
-				</li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link home" ><img src="home.svg" alt="" />Home</a></li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link hair">Hair</a></li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link video">Video</a></li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link photos">Photos</a></li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link store">Store</a></li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link learn">Learn</a></li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link community">Community</a></li>
-				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link about">About</a></li>
-			</ul>
+						<a href="index.html">
+							<img src="cart.svg" alt="" />
+							Search
+						</a>
+				</div>
+				<div class="mobile_nav_item mobile_nav_item1x home"><a href="index.html" class="nav_link ">Home</a></div>
+
+				<input type="checkbox" name="expand_me" id="expand_me" class="top_level_nav_item">
+				<label for="expand_me" class="mobile_nav_item mobile_nav_item1x hair">
+					<div class="top_level">Hair</div>
+					<div><a href="index.html" class="nav_link ">asd</a></div>
+					<div><a href="index.html" class="nav_link ">asd</a></div>
+					<div><a href="index.html" class="nav_link ">asd</a></div>
+				</label>
+
+				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link video">Video</a></div>
+				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link photos">Photos</a></div>
+				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link store">Store</a></div>
+				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link learn">Learn</a></div>
+				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link community">Community</a></div>
+				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link about">About</a></div>
+			</div>
 		</label>
 	</header>
 	<article id="content">
@@ -269,6 +294,18 @@
 	var checkbox;
 	var search;
 	var scrollPos;
+	var elementHeight;
+	var fontSize;
+
+	// $(window).click(function() {
+	// 	adjustnav(checkbox);
+	// });
+		// window.addEventListener("scroll", adjustnav, false);
+	  window.addEventListener("resize", adjustnav, false);
+	  window.addEventListener("load",   adjustnav, false);
+		// window.addEventListener("click",  adjustnav, false);
+		window.addEventListener("scale",  adjustnav, false);
+		window.addEventListener("zoomed",  adjustnav, false);
 
 		$(document).ready(function() {
 	   // put all your jQuery goodness in here.
@@ -276,26 +313,50 @@
 			checkbox = $('.search');
 			adjustnav(checkbox);
 
-			$('.searchinput').focus(function(){
-					$('searchinput').scrollTop(0);
-					adjustnav(checkbox);
-			});
 	 });
+
+	$('.top_level_nav_item').change(function(){
+
+		var theLabel = $(this).siblings('label');
+
+			if($(this).is(':checked'))
+			{
+					// Checkbox is checked.
+					var numChildren = theLabel.children().length;
+					// alert(numChildren);
+					theLabel.css({
+						"height": elementHeight * numChildren + "px"
+					});
+			}
+			else
+			{
+					// Checkbox is not checked.
+					// remove all inline css
+					theLabel.css({
+						"height": elementHeight + "px"
+					});
+			}
+
+	});
+
 
 	function adjustnav(checkbox)
 	{
 		var zoomHeight = window.innerHeight;
 		var ViewportHeight = document.documentElement.clientHeight;
-		var windowHeight = screen.height + 400;
-		var zoom = zoomHeight / windowHeight;
+		// var windowHeight = screen.height + 180;
+		var windowHeight = ViewportHeight;
+		var zoom = zoomHeight / ViewportHeight;
 		console.log("zoom: " + zoom);
 
 		console.log("root viewport height: " + ViewportHeight);
 		console.log("zoomed viewport height: " + zoomHeight);
 		console.log("windowheight: " + windowHeight);
 
-		var elementHeight = ViewportHeight / 12 * zoom;
-		var fontSize = elementHeight / 2;
+		elementHeight = ViewportHeight / 12 * zoom;
+		fontSize = elementHeight / 2;
+
+		console.log("elementHeight: " + elementHeight);
 
 		$(".mobile_nav_item").css({
 			"height": 0,
@@ -324,18 +385,6 @@
 		$(".accountfunctions").css({
 			"font-size": fontSize/1.5 + "px",
 			"line-height": fontSize + "px"
-		});
-
-		$(".searchinput").css({
-			"height": elementHeight + "px",
-			"font-size": fontSize + "px",
-			"line-height": elementHeight + "px"
-		});
-
-		$(".searchbutton").css({
-			"height": elementHeight + "px",
-			"font-size": fontSize + "px",
-			"line-height": elementHeight + "px"
 		});
 
 	}
