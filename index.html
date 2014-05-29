@@ -1,79 +1,349 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style type="text/css" media="screen">
+		*, *:before, *:after {
+			box-sizing: border-box !important;
+		}
+		article {
+			width: 960px;
+			min-width: 960px;
+			margin: 225px auto 0;
+			overflow: auto;
+			padding: 5%;
+		}
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Responsive-nav : Temporary Responsive Nav (Prototype)" />
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+		p {
+			font-size: 16px;
+		}
 
-    <title>Responsive-nav</title>
-  </head>
+		p img {
+			max-width: 100%;	
+		}
 
-  <body>
+		.one_half {
+			display: block;
+			float: left;
+			margin-right: 5%;
+			width: 45%;
+		}
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/hd-team/responsive-nav">View on GitHub</a>
+		.one_whole {
+			display: block;
+			clear: both;
+			width: 100%;
+		}
 
-          <h1 id="project_title">Responsive-nav</h1>
-          <h2 id="project_tagline">Temporary Responsive Nav (Prototype)</h2>
+		.one_third {
+			display: block;
+			float: left;
+			margin-right: 3%;
+			width: 30%;
+		}
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/hd-team/responsive-nav/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/hd-team/responsive-nav/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+		.mobile_nav_item1x, .mobile_nav_item2x, .mobile_nav_item3x {
+			display: block;
+			width: 100%;
+			border: 0 !important;
+			background: #6487aa;
+			border-bottom: 0;
+			text-align: center;
+			-webkit-text-size-adjust:none;
+			font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
+			font-weight: 500;
+			color: white;
+		}
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+		.mobile_nav_item1x a {
+			text-decoration: none;
+			color: black;
+			-webkit-text-size-adjust:none;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: #fcfcfc;
+		}
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+		.nav_link {
+			font-weight: 300;
+		}
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+		.nav_link:after {
+			display: inline-block;
+			position: relative;
+			content: "\232A";
+			margin-left: .5em;
+		}
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+		.transitional_nav {
+			display: block;
+			width: 0;
+			height: 0;
+			margin-left: -20px;
+			margin-top: -10px;
+			overflow: hidden;
+			text-indent: -999px;
+		}
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+		.transitional_nav + label {
+			background: url('nav.svg') top left no-repeat;
+			display: block;
+			position: relative;
+			width: 100%;
+			height: 200px;
+			overflow: hidden;
+			margin: 0 auto;
+			position: absolute;
+			top:0;
+			left:0;
+		}
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+		.transitional_nav + label ul {
+			display: none;
+		}
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+		.transitional_nav:checked + label {
+			display: block;
+			width: 100%;
+			height: 100% !important;
+			border: 25px solid #355874;
+			border: 0;
+			margin: 0;
+			top: 0;
+			left: 0;
+			position: fixed;
+			z-index: 9999;
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
+		}
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+		.transitional_nav:checked + label ul {
+			display: block;
+		}
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+		.accountfunctions {
+			background: #e6ecf0;
+			border: 0;
+			padding: 5%;
+		}
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+		.accountfunctions a {
+			display: block;
+			width: 33%;
+			height: 100%;
+			float: left;
+			text-align: center;
+			padding: 5%;
+			text-decoration: none;
+			color: #6487aa;
+			font-weight: 500;
+		}
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+		.accountfunctions a img {
+			width: 100%;
+			height: 50%;
+		}
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+		.search {
+			background: #b3c1cb;
+		}
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Responsive-nav maintained by <a href="https://github.com/hd-team">hd-team</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+		.search input {
+			display:block;
+			width: 80%;
+			float: left;
+			border: 15px solid #b3c1cb;
+			color: #b3c1cb;
+		}
 
-    
+		.search button {
+			display:block;
+			width: 20%;
+			float: left;
+			text-align: center;
+			padding: 0;
+			border-radius: 0;
+			background: #b3c1cb;
+			border: 0;
+		}
 
-  </body>
+		.hair { background: #8faac5 !important; }
+		.video { background: #e28283 !important; }
+		.photos { background: #72c4be !important; }
+		.store { background: #bed4a2 !important; }
+		.learn { background: #f3c78c !important; }
+		.community { background: #b999ce !important; }
+		.about { background: #f2d673 !important; }
+
+		.home {
+			color: #6487aa !important;
+		}
+		.home img {
+			width: 75px;
+			margin-right: .5em;
+			margin-top: .25em;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<input type="checkbox" name="mobile_nav" id="mobile_nav" value="0" class="transitional_nav" onclick="adjustnav(this)">
+		<label for="mobile_nav" class="mobile_nav_label">
+			<ul>
+				<li class="mobile_nav_item1x">&otimes; Close Navigation</li>
+				<li class="mobile_nav_item3x accountfunctions">
+						<a href="index.html">
+							<img src="key.svg" alt="" />
+							Sign In
+						</a>
+						<a href="index.html">
+							<img src="account.svg" alt="" />
+							Get an Account
+						</a>
+						<a href="index.html">
+							<img src="cart.svg" alt="" />
+							My Cart
+						</a>
+				</li>
+				<li class="mobile_nav_item1x search">
+					<input type="text" name="search" value="" placeholder="Search" class="searchinput">
+					<button name="button" class="searchbutton">Go</button>
+				</li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link home" ><img src="home.svg" alt="" />Home</a></li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link hair">Hair</a></li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link video">Video</a></li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link photos">Photos</a></li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link store">Store</a></li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link learn">Learn</a></li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link community">Community</a></li>
+				<li class="mobile_nav_item1x"><a href="index.html" class="nav_link about">About</a></li>
+			</ul>
+		</label>
+	</header>
+	<article id="content">
+
+
+	<p class="one_whole">
+		<img src="rotator.png" alt="" /><br/><br/>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem. Cras semper arcu eu turpis porttitor suscipit. Sed semper tortor a magna ornare porta. Donec hendrerit, tellus vitae ultricies auctor, enim erat auctor arcu, ut varius elit nunc non urna. Quisque sit amet leo ipsum, euismod feugiat ante. Aenean metus est, hendrerit cursus congue nec, accumsan at lectus. Aliquam nulla dui, varius vitae mattis bibendum, dictum hendrerit dui. Nullam enim risus, viverra eget euismod at, lacinia vitae purus. Vestibulum ipsum est, ultricies vitae congue at, ullamcorper vulputate dui. Quisque eget est nec tellus vehicula aliquet.
+	</p>
+
+	<p class="one_half">
+		<img src="hairstyle_women.jpg" alt="" /><br/><br/>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem. Cras semper arcu eu turpis porttitor suscipit. Sed semper tortor a magna ornare porta. Donec hendrerit, tellus vitae ultricies auctor, enim erat auctor arcu, ut varius elit nunc non urna. Quisque sit amet leo ipsum, euismod feugiat ante. Aenean metus est, hendrerit cursus congue nec, accumsan at lectus. Aliquam nulla dui, varius vitae mattis bibendum, dictum hendrerit dui. Nullam enim risus, viverra eget euismod at, lacinia vitae purus. Vestibulum ipsum est, ultricies vitae congue at, ullamcorper vulputate dui. Quisque eget est nec tellus vehicula aliquet.
+	</p>
+
+	<p class="one_half">
+		<img src="hairstyle_man.jpg" alt="" /><br/><br/>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem. Cras semper arcu eu turpis porttitor suscipit. Sed semper tortor a magna ornare porta. Donec hendrerit, tellus vitae ultricies auctor, enim erat auctor arcu, ut varius elit nunc non urna. Quisque sit amet leo ipsum, euismod feugiat ante. Aenean metus est, hendrerit cursus congue nec, accumsan at lectus. Aliquam nulla dui, varius vitae mattis bibendum, dictum hendrerit dui. Nullam enim risus, viverra eget euismod at, lacinia vitae purus. Vestibulum ipsum est, ultricies vitae congue at, ullamcorper vulputate dui. Quisque eget est nec tellus vehicula aliquet.
+	</p>
+
+	<p class="one_whole">
+
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem. Cras semper arcu eu turpis porttitor suscipit. Sed semper tortor a magna ornare porta. Donec hendrerit, tellus vitae ultricies auctor, enim erat auctor arcu, ut varius elit nunc non urna. Quisque sit amet leo ipsum, euismod feugiat ante. Aenean metus est, hendrerit cursus congue nec, accumsan at lectus. Aliquam nulla dui, varius vitae mattis bibendum, dictum hendrerit dui. Nullam enim risus, viverra eget euismod at, lacinia vitae purus. Vestibulum ipsum est, ultricies vitae congue at, ullamcorper vulputate dui. Quisque eget est nec tellus vehicula aliquet.
+	</p>
+
+	<p class="one_third">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem.
+	</p>
+
+	<p class="one_third">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem.
+	</p>
+
+	<p class="one_third">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem.
+	</p>
+
+	<script type="text/javascript" charset="utf-8">
+	var checkbox;
+	var search;
+	var scrollPos;
+
+		$(document).ready(function() {
+	   // put all your jQuery goodness in here.
+			checkbox = $('.transitional_nav');
+			checkbox = $('.search');
+			adjustnav(checkbox);
+
+			$('.searchinput').focus(function(){
+					$('searchinput').scrollTop(0);
+					adjustnav(checkbox);
+			});
+	 });
+
+	function adjustnav(checkbox)
+	{
+		var zoomHeight = window.innerHeight;
+		var ViewportHeight = document.documentElement.clientHeight;
+		var windowHeight = screen.height + 400;
+		var zoom = zoomHeight / windowHeight;
+		console.log("zoom: " + zoom);
+
+		console.log("root viewport height: " + ViewportHeight);
+		console.log("zoomed viewport height: " + zoomHeight);
+		console.log("windowheight: " + windowHeight);
+
+		var elementHeight = ViewportHeight / 12 * zoom;
+		var fontSize = elementHeight / 2;
+
+		$(".mobile_nav_item").css({
+			"height": 0,
+			"font-size": 0,
+			"line-height": 0
+		});
+
+		$(".mobile_nav_item1x").css({
+			"height": elementHeight + "px",
+			"font-size": fontSize + "px",
+			"line-height": elementHeight + "px"
+		});
+
+		$(".mobile_nav_item2x").css({
+			"height": elementHeight*2 + "px",
+			"font-size": fontSize + "px",
+			"line-height": elementHeight + "px"
+		});
+
+		$(".mobile_nav_item3x").css({
+			"height": elementHeight*3 + "px",
+			"font-size": fontSize + "px",
+			"line-height": elementHeight + "px"
+		});
+
+		$(".accountfunctions").css({
+			"font-size": fontSize/1.5 + "px",
+			"line-height": fontSize + "px"
+		});
+
+		$(".searchinput").css({
+			"height": elementHeight + "px",
+			"font-size": fontSize + "px",
+			"line-height": elementHeight + "px"
+		});
+
+		$(".searchbutton").css({
+			"height": elementHeight + "px",
+			"font-size": fontSize + "px",
+			"line-height": elementHeight + "px"
+		});
+
+	}
+
+
+	// input.on('blur', function(){
+	//     header.css({position:'fixed'})
+	// })
+	</script>
+</body>
 </html>
