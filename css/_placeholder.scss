@@ -1,0 +1,36 @@
+// Placeholder markup styles
+article {
+	width: 960px;
+	min-width: 960px;
+	margin: 225px auto 0;
+	overflow: auto;
+	padding: 5%;
+}
+
+p {
+	font-size: 16px;
+}
+
+p img {
+	max-width: 100%;
+}
+
+.one_half {
+	display: block;
+	float: left;
+	margin-right: 5%;
+	width: 45%;
+}
+
+.one_whole {
+	display: block;
+	clear: both;
+	width: 100%;
+}
+
+.one_third {
+	display: block;
+	float: left;
+	margin-right: 3%;
+	width: 30%;
+}

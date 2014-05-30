@@ -4,254 +4,205 @@
 	<meta charset="UTF-8">
 	<title></title>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<style type="text/css" media="screen">
-		*, *:before, *:after {
-			box-sizing: border-box !important;
-		}
-		article {
-			width: 960px;
-			min-width: 960px;
-			margin: 225px auto 0;
-			overflow: auto;
-			padding: 5%;
-		}
-
-		p {
-			font-size: 16px;
-		}
-
-		p img {
-			max-width: 100%;
-		}
-
-		.one_half {
-			display: block;
-			float: left;
-			margin-right: 5%;
-			width: 45%;
-		}
-
-		.one_whole {
-			display: block;
-			clear: both;
-			width: 100%;
-		}
-
-		.one_third {
-			display: block;
-			float: left;
-			margin-right: 3%;
-			width: 30%;
-		}
-
-		.mobile_nav_item {
-			-webkit-transition: all 0.3s 0s ease-out;  /* Saf3.2+, Chrome */
-			-moz-transition: all 0.3s 0s ease-out;  /* FF4+ */
-			-ms-transition: all 0.3s 0s ease-out;  /* IE10? */
-			-o-transition: all 0.3s 0s ease-out;  /* Opera 10.5+ */
-			transition: all 0.3s 0s ease-out;
-			display: block;
-			width: 100%;
-			border: 0 !important;
-			background: #6487aa;
-			border-bottom: 0;
-			text-align: center;
-			-webkit-text-size-adjust:none;
-			font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
-			font-weight: 500;
-			overflow: hidden;
-			text-decoration: none;
-		}
-
-		.mobile_nav_item1x, .mobile_nav_item2x, .mobile_nav_item3x {
-
-		}
-
-		.mobile_nav_item1x {
-			text-decoration: none;
-			color: black;
-			-webkit-text-size-adjust:none;
-			display: block;
-			width: 100%;
-			height: 100%;
-			background: #fcfcfc;
-		}
-
-		.top_level {
-			font-weight: 300;
-		}
-
-		.top_level:after {
-			display: inline-block;
-			position: relative;
-			content: "\232A";
-			margin-left: .5em;
-		}
-
-		.transitional_nav, .top_level_nav_item {
-			display: block;
-			width: 0;
-			height: 0;
-			margin-left: -20px;
-			margin-top: -10px;
-			overflow: hidden;
-			text-indent: -999px;
-		}
-
-		.transitional_nav + label {
-			background: url('nav.svg') top left no-repeat;
-			display: block;
-			position: relative;
-			width: 100%;
-			height: 200px;
-			overflow: hidden;
-			margin: 0 auto;
-			position: absolute;
-			top:0;
-			left:0;
-		}
-
-		.transitional_nav + label .wrapper {
-			display: none;
-		}
-
-		.transitional_nav:checked + label {
-			display: block;
-			width: 100%;
-			height: 100% !important;
-			border: 25px solid #355874;
-			border: 0;
-			margin: 0;
-			top: 0;
-			left: 0;
-			position: fixed;
-			z-index: 9999;
-			overflow-y: scroll;
-			-webkit-overflow-scrolling: touch;
-		}
-
-		.transitional_nav:checked + label .wrapper {
-			display: block;
-		}
-
-		.accountfunctions {
-			background: #e6ecf0;
-			border: 0;
-			padding: 5%;
-		}
-
-		.accountfunctions a {
-			display: block;
-			width: 25%;
-			height: 100%;
-			float: left;
-			text-align: center;
-			padding: 5%;
-			text-decoration: none;
-			color: #6487aa;
-			font-weight: 500;
-		}
-
-		.accountfunctions a img {
-			width: 100%;
-			height: 50%;
-		}
-
-		.search {
-			background: #b3c1cb;
-		}
-
-		.search input {
-			display:block;
-			width: 80%;
-			float: left;
-			border: 15px solid #b3c1cb;
-			color: #b3c1cb;
-		}
-
-		.search button {
-			display:block;
-			width: 20%;
-			float: left;
-			text-align: center;
-			padding: 0;
-			border-radius: 0;
-			background: #b3c1cb;
-			border: 0;
-		}
-
-		.hair { background: #8faac5 !important; }
-		.video { background: #e28283 !important; }
-		.photos { background: #72c4be !important; }
-		.store { background: #bed4a2 !important; }
-		.learn { background: #f3c78c !important; }
-		.community { background: #b999ce !important; }
-		.about { background: #f2d673 !important; }
-
-		.home {
-			color: #6487aa !important;
-		}
-
-		.home img {
-			display: inline-block;
-			height: 40px;
-			margin-right: 10px;
-			margin-bottom: -5px;
-		}
-
-		input[type=checkbox].top_level_nav_item + label {
-			height: 100%;
-			width: 100%;
-			display: block;
-			overflow: hidden;
-		}
-
-		input[type=checkbox].top_level_nav_item:checked + label {
-			overflow: visible;
-		}
-
-	</style>
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
 	<header>
 		<input type="checkbox" name="mobile_nav" id="mobile_nav" class="transitional_nav" onclick="adjustnav(this)">
 		<label for="mobile_nav" class="mobile_nav_label">
 			<div class="wrapper">
-				<div class="mobile_nav_item1x">&otimes; Close Navigation</div>
+				<div class="mobile_nav_item close">&otimes; Close Navigation</div>
 				<div class="mobile_nav_item3x accountfunctions">
 						<a href="index.html">
-							<img src="key.svg" alt="" />
+							<img src="images/key.svg" alt="" />
 							Sign In
 						</a>
 						<a href="index.html">
-							<img src="account.svg" alt="" />
+							<img src="images/account.svg" alt="" />
 							Get an Account
 						</a>
 						<a href="index.html">
-							<img src="cart.svg" alt="" />
+							<img src="images/cart.svg" alt="" />
 							My Cart
 						</a>
 						<a href="index.html">
-							<img src="cart.svg" alt="" />
+							<img src="images/cart.svg" alt="" />
 							Search
 						</a>
 				</div>
-				<div class="mobile_nav_item mobile_nav_item1x home"><a href="index.html" class="nav_link ">Home</a></div>
+				<div class="mobile_nav_item home"><a href="index.html">Home</a></div>
 
-				<input type="checkbox" name="expand_me" id="expand_me" class="top_level_nav_item">
-				<label for="expand_me" class="mobile_nav_item mobile_nav_item1x hair">
-					<div class="top_level">Hair</div>
-					<div><a href="index.html" class="nav_link ">asd</a></div>
-					<div><a href="index.html" class="nav_link ">asd</a></div>
-					<div><a href="index.html" class="nav_link ">asd</a></div>
+				<input type="checkbox" name="hair" id="hair" class="top_level_nav_item">
+				<label for="hair" class="mobile_nav_item hair">
+					<div class="primary">Hair</div>
+						<div class="secondary"><a href="index.html">Hair Home</a></div>
+						<div class="secondary"><a href="index.html">Our Hair Systems</a></div>
+							<div class="tertiary"><a href="index.html">High Definition Hair</a></div>
+							<div class="tertiary"><a href="index.html">Disposable Hair Systems</a></div>
+							<div class="tertiary"><a href="index.html">Full Lace</a></div>
+							<div class="tertiary"><a href="index.html">Lace Front</a></div>
+							<div class="tertiary"><a href="index.html">Skin</a></div>
+							<div class="tertiary"><a href="index.html">Conventional</a></div>
+						<div class="secondary"><a href="index.html">Hairpieces For Her</a></div>
+							<div class="tertiary"><a href="index.html">Full Cap Systems</a></div>
+						<div class="secondary"><a href="index.html">Cost &amp; Price List</a></div>
+							<div class="tertiary"><a href="index.html">Repairs &amp; Maintenance</a></div>
+							<div class="tertiary"><a href="index.html">Standing Order Discount</a></div>
+							<div class="tertiary"><a href="index.html">Cost Calculator</a></div>
+						<div class="secondary"><a href="index.html">How It Works</a></div>
+							<div class="tertiary"><a href="index.html">Free DVD</a></div>
 				</label>
 
-				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link video">Video</a></div>
-				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link photos">Photos</a></div>
-				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link store">Store</a></div>
-				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link learn">Learn</a></div>
-				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link community">Community</a></div>
-				<div class="mobile_nav_item mobile_nav_item1x"><a href="index.html" class="nav_link about">About</a></div>
+				<input type="checkbox" name="video" id="video" class="top_level_nav_item">
+				<label for="video" class="mobile_nav_item video">
+					<div class="primary">Video</div>
+						<div class="secondary"><a href="index.html">Video Home</a></div>
+						<div class="secondary"><a href="index.html">Attachment &amp; Removal</a></div>
+							<div class="tertiary"><a href="index.html">How-Tos</a></div>
+							<div class="tertiary"><a href="index.html">From The Lab</a></div>
+							<div class="tertiary"><a href="index.html">Product Reviews</a></div>
+						<div class="secondary"><a href="index.html">Care &amp; Maintenance</a></div>
+							<div class="tertiary"><a href="index.html">How-Tos</a></div>
+							<div class="tertiary"><a href="index.html">From The Lab</a></div>
+							<div class="tertiary"><a href="index.html">Product Reviews</a></div>
+						<div class="secondary"><a href="index.html">Ordering Guides &amp; Tips</a></div>
+							<div class="tertiary"><a href="index.html">Helpful Hints</a></div>
+							<div class="tertiary"><a href="index.html">Custom Fitting Kit</a></div>
+						<div class="secondary"><a href="index.html">Meet Our Clients</a></div>
+						<div class="secondary"><a href="index.html">Fun Stuff</a></div>
+				</label>
+
+				<input type="checkbox" name="photos" id="photos" class="top_level_nav_item">
+				<label for="photos" class="mobile_nav_item photos">
+					<div class="primary">Photos</div>
+						<div class="secondary"><a href="index.html">Photos Home</a></div>
+						<div class="secondary"><a href="index.html">Before &amp; After Photos</a></div>
+							<div class="tertiary"><a href="index.html">Men</a></div>
+							<div class="tertiary"><a href="index.html">Women</a></div>
+							<div class="tertiary"><a href="index.html">Ethnic</a></div>
+							<div class="tertiary"><a href="index.html">Full Cap</a></div>
+						<div class="secondary"><a href="index.html">Hairstyle Gallery</a></div>
+							<div class="tertiary"><a href="index.html">Men</a></div>
+							<div class="tertiary"><a href="index.html">Women</a></div>
+				</label>
+
+				<input type="checkbox" name="store" id="store" class="top_level_nav_item">
+				<label for="store" class="mobile_nav_item store">
+					<div class="primary">Store</div>
+						<div class="secondary"><a href="index.html">Store Home</a></div>
+						<div class="secondary"><a href="index.html">Hair Systems</a></div>
+							<div class="tertiary"><a href="index.html">Custom Hair for Everyone</a></div>
+							<div class="tertiary"><a href="index.html">Men's Stocks</a></div>
+							<div class="tertiary"><a href="index.html">Women's Wigs</a></div>
+						<div class="secondary"><a href="index.html">Attachment &amp; Removal</a></div>
+							<div class="tertiary"><a href="index.html">Hairpiece Tape</a></div>
+							<div class="tertiary"><a href="index.html">Liquid Adhesives</a></div>
+							<div class="tertiary"><a href="index.html">Solvents &amp; Removal</a></div>
+							<div class="tertiary"><a href="index.html">Clips</a></div>
+						<div class="secondary"><a href="index.html">Cleaning &amp; Styling</a></div>
+							<div class="tertiary"><a href="index.html">Shampoo</a></div>
+							<div class="tertiary"><a href="index.html">Conditioner</a></div>
+							<div class="tertiary"><a href="index.html">Hair Sprays &amp; Gels</a></div>
+							<div class="tertiary"><a href="index.html">Brushes &amp; Styling Tools</a></div>
+						<div class="secondary"><a href="index.html">Care &amp; Maintenance</a></div>
+							<div class="tertiary"><a href="index.html">Styro Heads &amp; Mounts</a></div>
+							<div class="tertiary"><a href="index.html">Knot Sealers &amp; Bleaching</a></div>
+							<div class="tertiary"><a href="index.html">Heir Thickeners &amp; Concealers</a></div>
+							<div class="tertiary"><a href="index.html">Scalp &amp; Hair Protection</a></div>
+							<div class="tertiary"><a href="index.html">Color Management</a></div>
+						<div class="secondary"><a href="index.html">Tools &amp; Everything Else</a></div>
+							<div class="tertiary"><a href="index.html">Kits &amp; Combo Packs</a></div>
+							<div class="tertiary"><a href="index.html">Videos</a></div>
+							<div class="tertiary"><a href="index.html">Miscellaneous</a></div>
+							<div class="tertiary"><a href="index.html">Regrowth &amp; DHT Inhibitors</a></div>
+						<div class="secondary highlight"><a href="index.html">Sales &amp; Specials</a></div>
+						<div class="secondary highlight"><a href="index.html">Hot Products</a></div>
+						<div class="secondary highlight"><a href="index.html">New Products</a></div>
+				</label>
+
+				<input type="checkbox" name="learn" id="learn" class="top_level_nav_item">
+				<label for="learn" class="mobile_nav_item learn">
+					<div class="primary">Learn</div>
+						<div class="secondary"><a href="index.html">Learn Home</a></div>
+						<div class="secondary"><a href="index.html">Attachment &amp; Removal</a></div>
+							<div class="tertiary"><a href="index.html">Scalp Preparation</a></div>
+							<div class="tertiary"><a href="index.html">Hair System Placement</a></div>
+							<div class="tertiary"><a href="index.html">Tape Adhesives</a></div>
+							<div class="tertiary"><a href="index.html">Liquid Adhesives</a></div>
+							<div class="tertiary"><a href="index.html">Daily Wear Tips</a></div>
+							<div class="tertiary"><a href="index.html">Removal Instructions</a></div>
+							<div class="tertiary"><a href="index.html">BrianD's Attachment Tips</a></div>
+						<div class="secondary"><a href="index.html">Care and Maintenance</a></div>
+							<div class="tertiary"><a href="index.html">Preventing Oxidation</a></div>
+							<div class="tertiary"><a href="index.html">Shampooing Tips</a></div>
+							<div class="tertiary"><a href="index.html">Cleaning Hair System</a></div>
+							<div class="tertiary"><a href="index.html">Lace Hairline Cleanup</a></div>
+							<div class="tertiary"><a href="index.html">Keeping Hair Soft</a></div>
+							<div class="tertiary"><a href="index.html">Preventing Hair Loss</a></div>
+							<div class="tertiary"><a href="index.html">Detangling</a></div>
+							<div class="tertiary"><a href="index.html">Coloring</a></div>
+							<div class="tertiary"><a href="index.html">BrianD Coloring</a></div>
+						<div class="secondary"><a href="index.html">HD Hair Line Newsletter</a></div>
+						<div class="secondary"><a href="index.html">Free Webcam Consulting</a></div>
+						<div class="secondary"><a href="index.html">Ordering Guide and Tips</a></div>
+							<div class="tertiary"><a href="index.html">Hair System Base Guide</a></div>
+							<div class="tertiary"><a href="index.html">Common Order Mistakes</a></div>
+							<div class="tertiary"><a href="index.html">Choosing a Hairstyle</a></div>
+							<div class="tertiary"><a href="index.html">Density Guide</a></div>
+							<div class="tertiary"><a href="index.html">Color Guide</a></div>
+							<div class="tertiary"><a href="index.html">Types of Hair</a></div>
+							<div class="tertiary"><a href="index.html">Waves &amp; Curl</a></div>
+							<div class="tertiary"><a href="index.html">Custom Fitting Kit</a></div>
+							<div class="tertiary"><a href="index.html">Women's Bonding Training</a></div>
+						<div class="secondary"><a href="index.html">Hair Replacement 101</a></div>
+							<div class="tertiary"><a href="index.html">Non Surgical Hair Systems</a></div>
+							<div class="tertiary"><a href="index.html">Restoration Surgery</a></div>
+							<div class="tertiary"><a href="index.html">Drugs &amp; Topical</a></div>
+							<div class="tertiary"><a href="index.html">Hair Replacement Links</a></div>
+							<div class="tertiary"><a href="index.html">Glossary of Terms</a></div>
+						<div class="secondary"><a href="index.html">Products 101</a></div>
+							<div class="tertiary"><a href="index.html">Basics for Beginners</a></div>
+							<div class="tertiary"><a href="index.html">Popular Must-Have Items</a></div>
+							<div class="tertiary"><a href="index.html">Problems &amp; Solutions</a></div>
+				</label>
+
+				<input type="checkbox" name="community" id="community" class="top_level_nav_item">
+				<label for="community" class="mobile_nav_item community">
+					<div class="primary">Community</div>
+						<div class="secondary"><a href="index.html">Community Home</a></div>
+						<div class="secondary"><a href="index.html">Forums</a></div>
+							<div class="tertiary"><a href="index.html">General Discussion</a></div>
+							<div class="tertiary"><a href="index.html">HD Feedback</a></div>
+							<div class="tertiary"><a href="index.html">Women's Hair Replacement</a></div>
+							<div class="tertiary"><a href="index.html">Local Stylists &amp; Services</a></div>
+						<div class="secondary"><a href="index.html">HD Official Blog</a></div>
+							<div class="tertiary"><a href="index.html">Bill's Blog (Archive)</a></div>
+							<div class="tertiary"><a href="index.html">Babe's Blog (Archive)</a></div>
+						<div class="secondary"><a href="index.html">Photos</a></div>
+							<div class="tertiary"><a href="index.html">Latest Galleries</a></div>
+							<div class="tertiary"><a href="index.html">All Member Galleries</a></div>
+				</label>
+
+				<input type="checkbox" name="about" id="about" class="top_level_nav_item">
+				<label for="about" class="mobile_nav_item about">
+					<div class="primary">About</div>
+						<div class="secondary"><a href="index.html">About Home</a></div>
+						<div class="secondary"><a href="index.html">Why Choose HD</a></div>
+							<div class="tertiary"><a href="index.html">Money Back Guarantee</a></div>
+							<div class="tertiary"><a href="index.html">HD vs. The Clubs</a></div>
+							<div class="tertiary"><a href="index.html">What Our Clients Say</a></div>
+							<div class="tertiary"><a href="index.html">History &amp; Bragging Rights</a></div>
+						<div class="secondary"><a href="index.html">Meet Our Team</a></div>
+							<div class="tertiary"><a href="index.html">The Bills</a></div>
+							<div class="tertiary"><a href="index.html">Hair Techs</a></div>
+						<div class="secondary"><a href="index.html">Press &amp; Media</a></div>
+							<div class="tertiary"><a href="index.html">Press Releases</a></div>
+						<div class="secondary"><a href="index.html">Join Our Team</a></div>
+							<div class="tertiary"><a href="index.html">Job Openings</a></div>
+						<div class="secondary"><a href="index.html">Contact Us</a></div>
+							<div class="tertiary"><a href="index.html">Driving Directions</a></div>
+							<div class="tertiary"><a href="index.html">Common Questions</a></div>
+				</label>
 			</div>
 		</label>
 	</header>
@@ -259,17 +210,17 @@
 
 
 	<p class="one_whole">
-		<img src="rotator.png" alt="" /><br/><br/>
+		<img src="images/rotator.png" alt="" /><br/><br/>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem. Cras semper arcu eu turpis porttitor suscipit. Sed semper tortor a magna ornare porta. Donec hendrerit, tellus vitae ultricies auctor, enim erat auctor arcu, ut varius elit nunc non urna. Quisque sit amet leo ipsum, euismod feugiat ante. Aenean metus est, hendrerit cursus congue nec, accumsan at lectus. Aliquam nulla dui, varius vitae mattis bibendum, dictum hendrerit dui. Nullam enim risus, viverra eget euismod at, lacinia vitae purus. Vestibulum ipsum est, ultricies vitae congue at, ullamcorper vulputate dui. Quisque eget est nec tellus vehicula aliquet.
 	</p>
 
 	<p class="one_half">
-		<img src="hairstyle_women.jpg" alt="" /><br/><br/>
+		<img src="images/hairstyle_women.jpg" alt="" /><br/><br/>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem. Cras semper arcu eu turpis porttitor suscipit. Sed semper tortor a magna ornare porta. Donec hendrerit, tellus vitae ultricies auctor, enim erat auctor arcu, ut varius elit nunc non urna. Quisque sit amet leo ipsum, euismod feugiat ante. Aenean metus est, hendrerit cursus congue nec, accumsan at lectus. Aliquam nulla dui, varius vitae mattis bibendum, dictum hendrerit dui. Nullam enim risus, viverra eget euismod at, lacinia vitae purus. Vestibulum ipsum est, ultricies vitae congue at, ullamcorper vulputate dui. Quisque eget est nec tellus vehicula aliquet.
 	</p>
 
 	<p class="one_half">
-		<img src="hairstyle_man.jpg" alt="" /><br/><br/>
+		<img src="images/hairstyle_man.jpg" alt="" /><br/><br/>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem. Cras semper arcu eu turpis porttitor suscipit. Sed semper tortor a magna ornare porta. Donec hendrerit, tellus vitae ultricies auctor, enim erat auctor arcu, ut varius elit nunc non urna. Quisque sit amet leo ipsum, euismod feugiat ante. Aenean metus est, hendrerit cursus congue nec, accumsan at lectus. Aliquam nulla dui, varius vitae mattis bibendum, dictum hendrerit dui. Nullam enim risus, viverra eget euismod at, lacinia vitae purus. Vestibulum ipsum est, ultricies vitae congue at, ullamcorper vulputate dui. Quisque eget est nec tellus vehicula aliquet.
 	</p>
 
@@ -290,109 +241,6 @@
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu magna sed felis vehicula tristique sed id turpis. Sed mattis, libero sed volutpat laoreet, nunc ipsum egestas nisl, a ornare ligula massa at sem.
 	</p>
 
-	<script type="text/javascript" charset="utf-8">
-	var checkbox;
-	var search;
-	var scrollPos;
-	var elementHeight;
-	var fontSize;
-
-	// $(window).click(function() {
-	// 	adjustnav(checkbox);
-	// });
-		// window.addEventListener("scroll", adjustnav, false);
-	  window.addEventListener("resize", adjustnav, false);
-	  window.addEventListener("load",   adjustnav, false);
-		// window.addEventListener("click",  adjustnav, false);
-		window.addEventListener("scale",  adjustnav, false);
-		window.addEventListener("zoomed",  adjustnav, false);
-
-		$(document).ready(function() {
-	   // put all your jQuery goodness in here.
-			checkbox = $('.transitional_nav');
-			checkbox = $('.search');
-			adjustnav(checkbox);
-
-	 });
-
-	$('.top_level_nav_item').change(function(){
-
-		var theLabel = $(this).siblings('label');
-
-			if($(this).is(':checked'))
-			{
-					// Checkbox is checked.
-					var numChildren = theLabel.children().length;
-					// alert(numChildren);
-					theLabel.css({
-						"height": elementHeight * numChildren + "px"
-					});
-			}
-			else
-			{
-					// Checkbox is not checked.
-					// remove all inline css
-					theLabel.css({
-						"height": elementHeight + "px"
-					});
-			}
-
-	});
-
-
-	function adjustnav(checkbox)
-	{
-		var zoomHeight = window.innerHeight;
-		var ViewportHeight = document.documentElement.clientHeight;
-		// var windowHeight = screen.height + 180;
-		var windowHeight = ViewportHeight;
-		var zoom = zoomHeight / ViewportHeight;
-		console.log("zoom: " + zoom);
-
-		console.log("root viewport height: " + ViewportHeight);
-		console.log("zoomed viewport height: " + zoomHeight);
-		console.log("windowheight: " + windowHeight);
-
-		elementHeight = ViewportHeight / 12 * zoom;
-		fontSize = elementHeight / 2;
-
-		console.log("elementHeight: " + elementHeight);
-
-		$(".mobile_nav_item").css({
-			"height": 0,
-			"font-size": 0,
-			"line-height": 0
-		});
-
-		$(".mobile_nav_item1x").css({
-			"height": elementHeight + "px",
-			"font-size": fontSize + "px",
-			"line-height": elementHeight + "px"
-		});
-
-		$(".mobile_nav_item2x").css({
-			"height": elementHeight*2 + "px",
-			"font-size": fontSize + "px",
-			"line-height": elementHeight + "px"
-		});
-
-		$(".mobile_nav_item3x").css({
-			"height": elementHeight*3 + "px",
-			"font-size": fontSize + "px",
-			"line-height": elementHeight + "px"
-		});
-
-		$(".accountfunctions").css({
-			"font-size": fontSize/1.5 + "px",
-			"line-height": fontSize + "px"
-		});
-
-	}
-
-
-	// input.on('blur', function(){
-	//     header.css({position:'fixed'})
-	// })
-	</script>
+	<script type="text/javascript" src="javascript/script.js"></script>
 </body>
 </html>
