@@ -14,39 +14,79 @@ var fontSize;
 		window.addEventListener("load",   adjustnav, false);
 		window.addEventListener("scale",  adjustnav, false);
 		window.addEventListener("zoomed",  adjustnav, false);
-		window.addEventListener("rotate",  adjustnav, false);
-
-
-});
+		window.addEventListener("orientationchange",  adjustnav, false);
+		$('.mobile_nav_label').scroll(function() {
+			console.log('scrolling');
+			var wheresmyhair = $('#hair').offset();
+			console.log(wheresmyhair.top);
+			$('#hair').scrollTop(500);
+		});
+	});
 
 $('.top_level_nav_item').change(function(){
 
+	// read out the ID of the checkbox and find the label with the matching class name
 	var theID = $(this).attr('id');
-	theID = '.' + theID;
-	console.log(theID);
-	var theLabel = $(this).siblings(theID);
+	var theClass = '.' + theID;
+	var theLabel = $(this).siblings(theClass);
+	console.log("for: " + theLabel.attr('for'));
 
 		if($(this).is(':checked'))
 		{
 				// Checkbox is checked.
-				var numChildren = theLabel.children('div').length;
-				console.log("numChildren: " + numChildren);
-				console.log("height: " + elementHeight * numChildren + "px");
+				expand(theLabel);
+				collapseAllOthers(theID);
 
-				theLabel.css({
-					"height": elementHeight * numChildren + "px"
-				});
-		}
-		else
-		{
+		} else {
 				// Checkbox is not checked.
-				// remove all inline css
-				theLabel.css({
-					"height": elementHeight + "px"
-				});
+				collapse(theLabel);
 		}
 
 });
+
+function expand(theLabel) {
+	var numChildren = theLabel.children('div').length;
+	console.log("numChildren: " + numChildren);
+	console.log("height: " + elementHeight * numChildren + "px");
+
+	theLabel.css({
+		"height": elementHeight * numChildren + 40 + "px"
+	});
+}
+
+function collapse(theLabel) {
+	var myInput = theLabel.attr('for');
+	console.log(myInput);
+	myInput = '#' + myInput;
+
+
+	// remove all inline css
+	theLabel.css({
+		"height": elementHeight + "px"
+	});
+	$(myInput).removeAttr('checked');
+}
+
+function collapseAllOthers(theID) {
+	$('.mobile_nav_item').each(function() {
+		var theLabel = $(this);
+		if(!theLabel.hasClass(theID)) {
+			collapse(theLabel);
+		}
+	});
+	scrollAdjust(theID);
+}
+
+function scrollAdjust(theID) {
+	// console.log('theID: ' + theID);
+	// var theClass = '.' + theID;
+	// var position = $(theClass).find('.primary').scrollTop();
+	// console.log('scrolltop: ' + position);
+	// $(theID).scrollTop(elementHeight);
+
+	console.log($('#hair').scrolltop);
+
+}
 
 
 function adjustnav(checkbox)

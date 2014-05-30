@@ -1,5 +1,6 @@
 @mixin border($color: 'black') {
   border-left: 20px solid $color !important;
+
 	& div {
 
 		border-bottom: 1px solid lighten($color, 10);

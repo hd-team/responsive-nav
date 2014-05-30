@@ -226,6 +226,20 @@ input[type=checkbox]:checked + .mobile_nav_item {
     background: #b999ce; }
   input[type=checkbox]:checked + .mobile_nav_item.about .primary {
     background: #f2d673; }
+  input[type=checkbox]:checked + .mobile_nav_item.hair {
+    border-bottom: 30px solid #8faac5 !important; }
+  input[type=checkbox]:checked + .mobile_nav_item.video {
+    border-bottom: 30px solid #e28283 !important; }
+  input[type=checkbox]:checked + .mobile_nav_item.photos {
+    border-bottom: 30px solid #72c4be !important; }
+  input[type=checkbox]:checked + .mobile_nav_item.store {
+    border-bottom: 30px solid #bed4a2 !important; }
+  input[type=checkbox]:checked + .mobile_nav_item.learn {
+    border-bottom: 30px solid #f3c78c !important; }
+  input[type=checkbox]:checked + .mobile_nav_item.community {
+    border-bottom: 30px solid #b999ce !important; }
+  input[type=checkbox]:checked + .mobile_nav_item.about {
+    border-bottom: 30px solid #f2d673 !important; }
   input[type=checkbox]:checked + .mobile_nav_item .primary {
     color: black; }
     input[type=checkbox]:checked + .mobile_nav_item .primary:after {

@@ -195,6 +195,14 @@ input[type=checkbox]:checked + .mobile_nav_item {
 	&.community .primary { background: $community; }
 	&.about .primary { background: $about; }
 
+	&.hair { border-bottom: 30px solid $hair !important; }
+	&.video { border-bottom: 30px solid $video !important; }
+	&.photos { border-bottom: 30px solid $photos !important; }
+	&.store { border-bottom: 30px solid $store !important; }
+	&.learn { border-bottom: 30px solid $learn !important; }
+	&.community { border-bottom: 30px solid $community !important; }
+	&.about { border-bottom: 30px solid $about !important; }
+
 	.primary {
 		color: black;
 
