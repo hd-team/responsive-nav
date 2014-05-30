@@ -14,6 +14,7 @@ var fontSize;
 		window.addEventListener("load",   adjustnav, false);
 		window.addEventListener("scale",  adjustnav, false);
 		window.addEventListener("zoomed",  adjustnav, false);
+		window.addEventListener("rotate",  adjustnav, false);
 
 
 });
