@@ -19,7 +19,8 @@ var fontSize;
 			console.log('scrolling');
 			var wheresmyhair = $('#hair').offset();
 			console.log(wheresmyhair.top);
-			$('#hair').scrollTop(500);
+			console.log($('#hairlabel').scrollTop());
+			$('.mobile_nav_label').scrollTop(elementHeight*5); // add logic to multiply elementheight depending on the index of the selected nav item
 		});
 	});
 
