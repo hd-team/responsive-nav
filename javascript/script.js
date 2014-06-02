@@ -1,5 +1,4 @@
 var checkbox;
-var search;
 var scrollPos;
 var elementHeight;
 var fontSize;
@@ -7,7 +6,6 @@ var fontSize;
 
 	$(document).ready(function() {
 		checkbox = $('.transitional_nav');
-		checkbox = $('.search');
 		adjustnav(checkbox);
 
 		window.addEventListener("resize", adjustnav, false);
@@ -15,32 +13,56 @@ var fontSize;
 		window.addEventListener("scale",  adjustnav, false);
 		window.addEventListener("zoomed",  adjustnav, false);
 		window.addEventListener("orientationchange",  adjustnav, false);
-		$('.mobile_nav_label').scroll(function() {
-			console.log('scrolling');
-			var wheresmyhair = $('#hair').offset();
-			console.log(wheresmyhair.top);
-			console.log($('#hairlabel').scrollTop());
-			$('.mobile_nav_label').scrollTop(elementHeight*5); // add logic to multiply elementheight depending on the index of the selected nav item
-		});
+
 	});
 
-$('.top_level_nav_item').change(function(){
+$('.transitional_nav').change(function() {
+	if($(this).is(':checked'))
+	{
+		// alert('nav open');
+		$('#content').hide();
+		$('body').css({
+			'height': '100%',
+			'overflow': 'hidden'
+		});
 
+
+	} else {
+		// alert('nav closed');
+		$('#content').show();
+		$('body').css({
+			'overflow': 'scroll',
+			'height': 'auto'
+		});
+
+	}
+});
+
+// $('body').on("touchmove", function(event) {
+// 	if($('.transitional_nav').is(':checked'))
+// 	{
+// 		event.preventDefault();
+// 		event.stopPropagation();
+// 	}
+// });
+
+$('.top_level_nav_item').change(function(){
 	// read out the ID of the checkbox and find the label with the matching class name
 	var theID = $(this).attr('id');
 	var theClass = '.' + theID;
 	var theLabel = $(this).siblings(theClass);
-	console.log("for: " + theLabel.attr('for'));
 
 		if($(this).is(':checked'))
 		{
 				// Checkbox is checked.
 				expand(theLabel);
 				collapseAllOthers(theID);
+				// preventBodyScroll();
 
 		} else {
 				// Checkbox is not checked.
 				collapse(theLabel);
+
 		}
 
 });
@@ -52,6 +74,16 @@ function expand(theLabel) {
 
 	theLabel.css({
 		"height": elementHeight * numChildren + 40 + "px"
+	});
+}
+
+function preventBodyScroll() {
+	// $('article').css({
+	// 	'display': 'none'
+	// });
+	$('article').on("touchmove", function(event) {
+			event.preventDefault();
+			event.stopPropagation();
 	});
 }
 
@@ -79,29 +111,19 @@ function collapseAllOthers(theID) {
 }
 
 function scrollAdjust(theID) {
-	// console.log('theID: ' + theID);
-	// var theClass = '.' + theID;
-	// var position = $(theClass).find('.primary').scrollTop();
-	// console.log('scrolltop: ' + position);
-	// $(theID).scrollTop(elementHeight);
-
-	console.log($('#hair').scrolltop);
-
+		// Find the position index of the clicked navigation item
+		var navItemIndex = $('#' + theID).index('input');
+		$('.mobile_nav_label').scrollTop(elementHeight*(4 + navItemIndex)-10);
 }
 
 
 function adjustnav(checkbox)
 {
+	// prevent scrolling of the body content while the nav is active
+
 	var zoomHeight = window.innerHeight;
 	var ViewportHeight = document.documentElement.clientHeight;
-	// var windowHeight = screen.height + 180;
-	var windowHeight = ViewportHeight;
 	var zoom = zoomHeight / ViewportHeight;
-	console.log("zoom: " + zoom);
-
-	console.log("root viewport height: " + ViewportHeight);
-	console.log("zoomed viewport height: " + zoomHeight);
-	console.log("windowheight: " + windowHeight);
 
 	elementHeight = ViewportHeight / 12 * zoom;
 	fontSize = elementHeight / 2;
